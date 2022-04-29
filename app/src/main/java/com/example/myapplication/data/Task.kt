@@ -2,12 +2,18 @@ package com.example.myapplication.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
-@Entity(tableName = "user_table")
+enum class Priority {
+    LOW, MEDIUM, HIGH, ASAP
+}
+
+@Entity(tableName = "task_table")
 data class Task(
     @PrimaryKey
     val id: Int,
-    val firstName: String,
-    val lastName: String,
-    val age: Int
+    val title: String,
+    val priority: Priority,
+    val progress: Int,
+    val deadline: Date
 )
