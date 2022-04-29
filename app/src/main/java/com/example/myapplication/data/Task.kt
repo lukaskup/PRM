@@ -4,16 +4,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-enum class Priority {
-    LOW, MEDIUM, HIGH, ASAP
-}
-
 @Entity(tableName = "task_table")
 data class Task(
     @PrimaryKey
     val id: Int,
     val title: String,
-    val priority: Priority,
+    val priority: String,
     val progress: Int,
-    val deadline: Date
+    val deadline: Date,
+    val estimateTimeMinutes: Int
 )
