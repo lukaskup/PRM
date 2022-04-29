@@ -12,6 +12,6 @@ interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addTask(task: Task)
 
-    @Query("SELECT * FROM user_table ORDER BY id ASC")
+    @Query("SELECT * FROM tasks ORDER BY id ASC")
     fun readAllData(): LiveData<List<Task>>
 }
