@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AddFragment"
+    tools:context=".fragments.add.AddFragment"
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="33dp">
 
@@ -25,41 +25,57 @@
 
     <EditText
         android:id="@+id/taskPriority"
-        android:layout_width="349dp"
-        android:layout_height="43dp"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
         android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="175dp"
-        tools:text="Priority" />
+        android:inputType="text"
+        android:text="Priority"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245" />
 
     <EditText
         android:id="@+id/taskDeadline"
-        android:layout_width="350dp"
-        android:layout_height="44dp"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
         android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="241dp"
-        tools:text="Deadline" />
+        android:inputType="text"
+        android:text="Deadline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.337" />
 
     <EditText
-        android:id="@+id/taskEstimatedTime"
-        android:layout_width="349dp"
-        android:layout_height="44dp"
+        android:id="@+id/taskEstimate"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
         android:ems="10"
-        android:inputType="number"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="308dp"
-        tools:text="Estimate (minutes)" />
+        android:inputType="text"
+        android:text="Estimate (minutes)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.417" />
 
     <Button
         android:id="@+id/saveTask"
         android:layout_width="349dp"
         android:layout_height="45dp"
         android:text="Save"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="374dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52" />
 
     <TextView
         android:id="@+id/textView"
@@ -67,7 +83,11 @@
         android:layout_height="23dp"
         android:rotationX="-1"
         android:text="Add Task"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="46dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.069" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

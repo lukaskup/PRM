@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ListFragment : Fragment() {
 
@@ -16,7 +16,7 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
-        val floatingButton = view.findViewById<Button>(R.id.floatingButton)
+        val floatingButton = view.findViewById<FloatingActionButton>(R.id.floatingButton)
         floatingButton.setOnClickListener {_ ->
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
