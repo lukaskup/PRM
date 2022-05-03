@@ -67,7 +67,7 @@
         android:layout_height="23dp"
         android:rotationX="-1"
         android:text="Add Task"
-        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="46dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
