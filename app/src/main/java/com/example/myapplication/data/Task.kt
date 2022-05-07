@@ -12,7 +12,7 @@ data class Task(
     @PrimaryKey
     val id: Int,
     val title: String,
-    val priority: String,
+    val priority: Int,
     val progress: Int,
     val deadline: Date,
     val estimateTimeMinutes: Int
