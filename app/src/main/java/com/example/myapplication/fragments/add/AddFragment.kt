@@ -61,7 +61,7 @@ class AddFragment : Fragment() {
     }
 
     private fun saveData(view: View){
-        val name = view.taskName.text.toString()
+        val name = view.taskTitle.text.toString()
         val priority = view.taskPriority.text.toString()
         val estimate = view.taskEstimate.text.toString()
 

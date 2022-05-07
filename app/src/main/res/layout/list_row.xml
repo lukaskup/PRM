@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/taskName"
+            android:id="@+id/taskTitle_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -36,7 +36,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/priority_txt"
+                android:id="@+id/taskPriority_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -44,7 +44,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/percentageDone_txt"
+                android:id="@+id/taskProgress_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -52,7 +52,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tv_deadline"
+                android:id="@+id/taskDeadline_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
