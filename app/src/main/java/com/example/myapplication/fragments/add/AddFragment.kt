@@ -1,5 +1,6 @@
 package com.example.myapplication.fragments.add
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -33,6 +34,25 @@ class AddFragment : Fragment() {
 
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
 
+        val editText = view.taskDeadline
+        val date =
+            DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                myCalendar[Calendar.YEAR] = year
+                myCalendar[Calendar.MONTH] = month
+                myCalendar[Calendar.DAY_OF_MONTH] = day
+                updateLabel(editText)
+            }
+
+        editText.setOnClickListener(View.OnClickListener {
+            DatePickerDialog(
+                view.context,
+                date,
+                myCalendar[Calendar.YEAR],
+                myCalendar[Calendar.MONTH],
+                myCalendar[Calendar.DAY_OF_MONTH]
+            ).show()
+        })
+
         view.saveTask.setOnClickListener{
             saveData(view)
         }
@@ -45,7 +65,7 @@ class AddFragment : Fragment() {
         val priority = view.taskPriority.text.toString()
         val estimate = view.taskEstimate.text.toString()
 
-        if(inputCheck(name) && inputCheck(priority) && inputCheck(estimate)) {
+        if(inputCheck(name) && inputCheck(priority) && inputCheck(estimate) && deadline !== null) {
             var task = Task(0, name, priority.toInt(), 0, deadline!!, estimate.toInt())
             mTaskViewModel.addTask(task)
             Toast.makeText(requireContext(), "Task saved", Toast.LENGTH_SHORT).show()
