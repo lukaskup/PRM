@@ -9,7 +9,7 @@ import java.util.Date
 @Entity(tableName = "task_table")
 @TypeConverters(DateConverter::class)
 data class Task(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val title: String,
     val priority: Int,

@@ -15,7 +15,7 @@ import com.example.myapplication.data.TaskViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ListAdapter(private val mTaskViewModel: TaskViewModel): RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
+class ListAdapter(): RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     private var taskList = emptyList<Task>()
 
     class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {}
@@ -24,12 +24,12 @@ class ListAdapter(private val mTaskViewModel: TaskViewModel): RecyclerView.Adapt
      return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_row, parent,false))
     }
 
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentTask = taskList[position]
-        holder.itemView.findViewById<TextView>(R.id.taskTitle_txt).text = currentTask.title.toString()
-        holder.itemView.findViewById<TextView>(R.id.taskPriority_txt).text = "Priority: ${currentTask.priority.toString()}"
-        holder.itemView.findViewById<TextView>(R.id.taskProgress_txt).text = "${currentTask.progress.toString()}%"
+
+        holder.itemView.findViewById<TextView>(R.id.taskTitle_txt).text = currentTask.title
+        holder.itemView.findViewById<TextView>(R.id.taskPriority_txt).text = "Priority: ${currentTask.priority}"
+        holder.itemView.findViewById<TextView>(R.id.taskProgress_txt).text = "${currentTask.progress}%"
 
         val myFormat = "dd/MM/yy"
         val dateFormat = SimpleDateFormat(myFormat, Locale.US)

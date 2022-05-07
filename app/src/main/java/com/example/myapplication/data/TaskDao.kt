@@ -9,7 +9,7 @@ import androidx.room.Query
 // Dao - Data Access Object
 @Dao
 interface TaskDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     fun addTask(task: Task)
 
     @Query("SELECT * FROM task_table ORDER BY id ASC")
