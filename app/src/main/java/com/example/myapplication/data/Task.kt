@@ -1,11 +1,14 @@
 package com.example.myapplication.data
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.example.myapplication.TypeConverters.DateConverter
+import kotlinx.android.parcel.Parcelize
 import java.util.Date
 
+@Parcelize
 @Entity(tableName = "task_table")
 @TypeConverters(DateConverter::class)
 data class Task(
@@ -16,4 +19,4 @@ data class Task(
     val progress: Int,
     val deadline: Date,
     val estimateTimeMinutes: Int
-)
+): Parcelable
