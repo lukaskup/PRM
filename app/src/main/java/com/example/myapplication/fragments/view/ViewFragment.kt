@@ -1,18 +1,17 @@
 package com.example.myapplication.fragments.view
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.R
 import com.example.myapplication.data.TaskViewModel
-import com.google.android.material.progressindicator.CircularProgressIndicator
 import kotlinx.android.synthetic.main.fragment_view.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -52,5 +51,33 @@ class ViewFragment: Fragment() {
         }
 
         return view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.view_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.view_menu) {
+            deleteTask()
+        }
+        if(item.itemId == R.id.menu_edit) {
+            val action = ViewFragmentDirections.actionViewFragmentToUpdateFragment(args.currentTask)
+            findNavController().navigate(action)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteTask() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yup!") { _, _ ->
+            mTaskViewModel.deleteTask(args.currentTask)
+            Toast.makeText(requireContext(), "Successfully deleted task ${args.currentTask.id}!", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_viewFragment_to_listFragment)
+        }
+        builder.setNegativeButton("Nope!") { _, _ -> }
+        builder.setTitle("Delete task")
+        builder.setMessage("Are you sure you want to delete this task?")
+        builder.create().show()
     }
 }

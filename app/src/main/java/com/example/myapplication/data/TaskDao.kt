@@ -1,10 +1,7 @@
 package com.example.myapplication.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 // Dao - Data Access Object
 @Dao
@@ -14,4 +11,10 @@ interface TaskDao {
 
     @Query("SELECT * FROM task_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<Task>>
+
+    @Update
+    fun updateTask(task: Task)
+
+    @Delete
+    fun deleteTask(task: Task)
 }

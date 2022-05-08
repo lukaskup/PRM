@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="33dp">
 
     <EditText
-        android:id="@+id/taskTitle"
+        android:id="@+id/taskUpdateTitle"
         android:layout_width="347dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -24,7 +24,7 @@
 
 
     <EditText
-        android:id="@+id/taskPriority"
+        android:id="@+id/taskUpdatePriority"
         android:layout_width="347dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.245" />
 
     <EditText
-        android:id="@+id/taskDeadline"
+        android:id="@+id/taskUpdateDeadline"
         android:layout_width="350dp"
         android:layout_height="43dp"
         android:layout_marginTop="8dp"
@@ -55,7 +55,24 @@
         app:layout_constraintVertical_bias="0.401" />
 
     <EditText
-        android:id="@+id/taskEstimate"
+        android:id="@+id/taskUpdateProgress"
+        android:layout_width="350dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="Progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48" />
+
+    <EditText
+        android:id="@+id/taskUpdateEstimate"
         android:layout_width="350dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -69,16 +86,16 @@
         app:layout_constraintVertical_bias="0.325" />
 
     <Button
-        android:id="@+id/saveTask"
+        android:id="@+id/updateTask"
         android:layout_width="349dp"
         android:layout_height="42dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52" />
+        app:layout_constraintVertical_bias="0.576" />
 
     <TextView
         android:id="@+id/textView"
