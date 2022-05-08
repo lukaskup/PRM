@@ -9,7 +9,7 @@ interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun addTask(task: Task)
 
-    @Query("SELECT * FROM task_table ORDER BY id ASC")
+    @Query("SELECT * FROM task_table WHERE deadline > strftime('%s','now') || substr(strftime('%f','now'),4) ORDER BY deadline;")
     fun readAllData(): LiveData<List<Task>>
 
     @Update
