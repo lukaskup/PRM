@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.data.Task
 import com.example.myapplication.data.TaskViewModel
+import com.example.myapplication.fragments.view.ViewFragmentDirections
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,6 +31,10 @@ class ListAdapter(): RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         holder.itemView.findViewById<TextView>(R.id.taskTitle_txt).text = currentTask.title
         holder.itemView.findViewById<TextView>(R.id.taskPriority_txt).text = "Priority: ${currentTask.priority}"
         holder.itemView.findViewById<TextView>(R.id.taskProgress_txt).text = "${currentTask.progress}%"
+        holder.itemView.findViewById<ConstraintLayout>(R.id.tasksList).setOnClickListener {
+            val action = ListFragmentDirections.actionListFragmentToViewFragment(currentTask)
+            holder.itemView.findNavController().navigate(action)
+        }
 
         val myFormat = "dd/MM/yy"
         val dateFormat = SimpleDateFormat(myFormat, Locale.US)

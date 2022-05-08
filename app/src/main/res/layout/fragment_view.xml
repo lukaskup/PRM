@@ -1,98 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.details.DetailsFragment"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".fragments.view.ViewFragment">
+
+    <TextView
+        android:id="@+id/taskDetailsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create prm project"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <TextView
+        android:id="@+id/tv_taskDetailsPrio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Priority: 1"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        >
-        <TextView
-            android:id="@+id/tv_taskDetailsTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Go shopping"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            />
+        android:orientation="horizontal">
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="PRIO:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="5dp"
-            />
-        <TextView
-            android:id="@+id/tv_taskDetailsPrio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="1"
-            android:textSize="18sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estimated:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="5dp"
-            />
-        <TextView
-            android:id="@+id/tv_taskDetailsEstimatedH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="26H"
-            android:textSize="18sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Deadline:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="5dp"
-            />
-        <TextView
-            android:id="@+id/tv_taskDetailsDeadline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="22.04.2022"
-            android:textSize="18sp"
-            />
+        android:orientation="horizontal">
 
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="165dp">
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/circularProgressIndicatorPercentage"
@@ -106,6 +67,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             app:trackColor="#e3e3e3" />
 
         <TextView
@@ -119,16 +81,49 @@
             app:layout_constraintStart_toStartOf="@+id/circularProgressIndicatorPercentage"
             app:layout_constraintTop_toTopOf="@+id/circularProgressIndicatorPercentage" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="50dp">
-        <Button
-            android:id="@+id/shareTaskButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Share task progress"/>
+        android:layout_marginTop="50dp"
+        android:gravity="center">
+
     </LinearLayout>
-</LinearLayout>
+
+    <Button
+        android:id="@+id/shareTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share task progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <TextView
+        android:id="@+id/tv_taskDetailsDeadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Due date: 22.04.2022"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.102" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estimated: 26H"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.14" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
