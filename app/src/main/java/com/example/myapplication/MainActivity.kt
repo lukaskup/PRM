@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(findNavController(R.id.fragment))
 
+//        mTaskViewModel.deleteAllData()
+
         //add example data
         val tasks: Array<Task> = arrayOf(
             Task(0, "Create example data", 1, 20, Date(2022, 4, 1), 60),
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             Task(0, "This is an example task", 10, 90, Date(2022, 5, 28), 360)
         )
 
-                tasks.forEach { task -> mTaskViewModel.addTask(task) }
+        tasks.forEach { task -> mTaskViewModel.addTask(task) }
     }
 
     override fun onSupportNavigateUp(): Boolean {

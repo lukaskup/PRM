@@ -34,4 +34,10 @@ class TaskViewModel(application: Application): AndroidViewModel(application) {
             repository.updateTask(task)
         }
     }
+
+    fun deleteAllData(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllData()
+        }
+    }
 }
