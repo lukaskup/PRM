@@ -7,22 +7,26 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat
+import androidx.fragment.app.findFragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.data.Task
 import com.example.myapplication.data.TaskViewModel
-import com.example.myapplication.fragments.view.ViewFragmentDirections
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ListAdapter(): RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     private var taskList = emptyList<Task>()
+    private lateinit var mTaskViewModel: TaskViewModel
 
     class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-     return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_row, parent,false))
+        mTaskViewModel = ViewModelProvider(parent.findFragment())[TaskViewModel::class.java]
+        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_row, parent,false));
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -34,6 +38,19 @@ class ListAdapter(): RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         holder.itemView.findViewById<ConstraintLayout>(R.id.tasksList).setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToViewFragment(currentTask)
             holder.itemView.findNavController().navigate(action)
+        }
+
+        holder.itemView.findViewById<ConstraintLayout>(R.id.tasksList).setOnLongClickListener { view ->
+            val builder = AlertDialog.Builder(view.context)
+            builder.setPositiveButton("Yup!") { _, _ ->
+                mTaskViewModel.deleteTask(currentTask)
+                Toast.makeText(view.context, "Successfully ended task ${currentTask.id}!", Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("Nope!") { _, _ -> }
+            builder.setTitle("End task")
+            builder.setMessage("Are you sure you want to end this task?")
+            builder.create().show()
+            true
         }
 
         val myFormat = "dd/MM/yy"
