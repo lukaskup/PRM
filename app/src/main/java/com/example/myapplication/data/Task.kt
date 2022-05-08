@@ -19,4 +19,8 @@ data class Task(
     val progress: Int,
     val deadline: Date,
     val estimateTimeMinutes: Int
-): Parcelable
+): Parcelable {
+    override fun toString(): String {
+        return "Yo im ${progress}% done with task: '${title}'!"
+    }
+}
