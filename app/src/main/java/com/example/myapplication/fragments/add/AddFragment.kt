@@ -66,7 +66,7 @@ class AddFragment : Fragment() {
         val estimate = view.taskEstimate.text.toString()
 
         if(inputCheck(name) && inputCheck(priority) && inputCheck(estimate) && deadline !== null) {
-            var task = Task(0, name, priority.toInt(), 0, deadline!!, estimate.toInt())
+            val task = Task(0, name, priority.toInt(), 0, deadline!!, estimate.toInt())
             mTaskViewModel.addTask(task)
             Toast.makeText(requireContext(), "Task saved", Toast.LENGTH_SHORT).show()
 

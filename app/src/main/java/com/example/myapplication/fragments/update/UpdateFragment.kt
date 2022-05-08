@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.R
+import com.example.myapplication.data.Task
 import com.example.myapplication.data.TaskViewModel
 import kotlinx.android.synthetic.main.fragment_update.view.*
 import java.text.SimpleDateFormat
@@ -31,12 +32,12 @@ class UpdateFragment : Fragment() {
     ): View? {
         val view =inflater.inflate(R.layout.fragment_update, container, false)
         mTaskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
-        view.taskUpdateTitle.setText(args.currentTask.name)
+        view.taskUpdateTitle.setText(args.currentTask.title)
         view.taskUpdatePriority.setText(args.currentTask.priority.toString())
-        view.findViewById<EditText>(R.id.et_percentageDone_update).setText(args.currentTask.percentageDone.toString())
-        view.findViewById<EditText>(R.id.et_estimatedTime_update).setText(args.currentTask.estimatedTimeInHours.toString())
+        view.taskUpdateProgress.setText(args.currentTask.progress.toString())
+        view.taskUpdateEstimate.setText(args.currentTask.estimateTimeMinutes.toString())
         deadline = args.currentTask.deadline
-        val editText = view.findViewById<EditText>(R.id.et_deadline_update)
+        val editText = view.findViewById<EditText>(R.id.taskUpdateDeadline)
 
         updateLabel(editText, true)
 
@@ -59,7 +60,7 @@ class UpdateFragment : Fragment() {
             ).show()
         })
 
-        view.findViewById<Button>(R.id.update_btn).setOnClickListener{
+        view.findViewById<Button>(R.id.updateTask).setOnClickListener{
             updateItem(view)
         }
 
@@ -77,13 +78,13 @@ class UpdateFragment : Fragment() {
     }
 
     private fun updateItem(view: View) {
-        val taskName = view.findViewById<EditText>(R.id.et_taskName_update).text.toString()
-        val priority = view.findViewById<EditText>(R.id.et_priority_update).text.toString().toInt()
-        val percentageDone = view.findViewById<EditText>(R.id.et_percentageDone_update).text.toString().toInt()
-        val estimatedTime = view.findViewById<EditText>(R.id.et_estimatedTime_update).text.toString().toInt()
+        val taskTitle = view.taskUpdateTitle.text.toString()
+        val priority = view.taskUpdatePriority.text.toString()
+        val progress = view.taskUpdateProgress.text.toString()
+        val estimate= view.taskUpdateEstimate.text.toString()
 
-        if(inputCheck(taskName)) {
-            val task = Task(args.currentTask.uid, taskName, priority, deadline!!, percentageDone, estimatedTime)
+        if(inputCheck(taskTitle) && inputCheck(priority) && inputCheck(estimate) && deadline !== null) {
+            val task = Task(args.currentTask.id, taskTitle, priority.toInt(), progress.toInt(), deadline!!, estimate.toInt())
             mTaskViewModel.updateTask(task)
             Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_SHORT).show()
 
@@ -93,7 +94,7 @@ class UpdateFragment : Fragment() {
         }
 
     }
-    private fun inputCheck(taskName: String): Boolean{
-        return !(TextUtils.isEmpty(taskName))
+    private fun inputCheck(value: String): Boolean{
+        return !(TextUtils.isEmpty(value))
     }
 }
