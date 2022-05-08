@@ -13,6 +13,7 @@ import com.example.myapplication.R
 import com.example.myapplication.data.TaskViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_list.view.*
+import java.util.*
 
 class ListFragment : Fragment() {
 
@@ -30,14 +31,24 @@ class ListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java )
-        mTaskViewModel.readAllData.observe(viewLifecycleOwner, Observer { task ->
-            adapter.setData(task)
+        mTaskViewModel.readAllData.observe(viewLifecycleOwner, Observer { tasks ->
+            adapter.setData(tasks)
+            val today = Date()
+            val calendar = Calendar.getInstance()
+            calendar.time = today
+            calendar.add(Calendar.DATE, Calendar.DAY_OF_WEEK * -1 + 1)
+            calendar.add(Calendar.DATE, 6)
+            val endOfTheWeek = calendar.time
+
+            val tasksLeft = tasks.filter{task -> task.deadline >= Date() &&  task.deadline <= endOfTheWeek && task.progress < 100}
+            view.tasksLeft.text = "Tasks left this week: ${tasksLeft.size}"
         })
 
         val floatingButton = view.findViewById<FloatingActionButton>(R.id.floatingButton)
         floatingButton.setOnClickListener {_ ->
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
+
         return view
     }
 }

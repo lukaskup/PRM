@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContentProviderCompat
 import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -53,8 +52,7 @@ class ListAdapter(): RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
             true
         }
 
-        val myFormat = "dd/MM/yy"
-        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+        val dateFormat = SimpleDateFormat("dd/MM/yy", Locale.getDefault())
         holder.itemView.findViewById<TextView>(R.id.taskDeadline_txt).text = "Due: ${dateFormat.format(currentTask.deadline)}"
     }
 
