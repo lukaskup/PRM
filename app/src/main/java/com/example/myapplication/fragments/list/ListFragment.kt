@@ -19,6 +19,18 @@ class ListFragment : Fragment() {
 
     private lateinit var mTaskViewModel: TaskViewModel
 
+    private fun getEndOfTheWeek(): Date{
+        val calendar = Calendar.getInstance()
+        calendar.time = Date()
+        calendar.add(Calendar.DATE, Calendar.DATE * -1 + 1)
+        calendar.add(Calendar.DATE, 6)
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+
+        return calendar.time
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,15 +45,7 @@ class ListFragment : Fragment() {
         mTaskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java )
         mTaskViewModel.readAllData.observe(viewLifecycleOwner, Observer { tasks ->
             adapter.setData(tasks)
-            val today = Date()
-            val calendar = Calendar.getInstance()
-            calendar.time = Date()
-            calendar.add(Calendar.DATE, Calendar.DATE * -1 + 1)
-            calendar.add(Calendar.DATE, 6)
-            calendar.set(Calendar.HOUR_OF_DAY, 23)
-            calendar.set(Calendar.MINUTE, 59)
-            calendar.set(Calendar.SECOND, 59)
-            val endOfTheWeek = calendar.time
+            val endOfTheWeek = getEndOfTheWeek()
             val tasksLeft = tasks.filter{task -> task.deadline >= Date() &&  task.deadline <= endOfTheWeek && task.progress < 100}
             view.tasksLeft.text = "Tasks left this week: ${tasksLeft.size}"
         })
