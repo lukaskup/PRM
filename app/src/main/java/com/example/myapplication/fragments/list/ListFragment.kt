@@ -35,11 +35,13 @@ class ListFragment : Fragment() {
             adapter.setData(tasks)
             val today = Date()
             val calendar = Calendar.getInstance()
-            calendar.time = today
-            calendar.add(Calendar.DATE, Calendar.DAY_OF_WEEK * -1 + 1)
+            calendar.time = Date()
+            calendar.add(Calendar.DATE, Calendar.DATE * -1 + 1)
             calendar.add(Calendar.DATE, 6)
+            calendar.set(Calendar.HOUR_OF_DAY, 23)
+            calendar.set(Calendar.MINUTE, 59)
+            calendar.set(Calendar.SECOND, 59)
             val endOfTheWeek = calendar.time
-
             val tasksLeft = tasks.filter{task -> task.deadline >= Date() &&  task.deadline <= endOfTheWeek && task.progress < 100}
             view.tasksLeft.text = "Tasks left this week: ${tasksLeft.size}"
         })
